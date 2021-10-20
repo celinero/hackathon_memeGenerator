@@ -68,3 +68,43 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+
+
+
+"/"
+<Home />
+fetch("https://api.imgflip.com/get_memes")
+
+
+"/:template_id"
+<GenerateMeme />
+fetch("https://api.imgflip.com/get_memes")
+
+fetch("https://api.imgflip.com/caption_image", {
+  body: "template_id=181913649&username=croure&password=y2btvB-A9TQb92n&text0=testtop&text1=testbottom",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  method: "POST"
+})
+
+
+
+
+https://i.imgflip.com/5r4djq.jpg
+
+
+curl https://api.imgflip.com/get_memes
+
+curl https://api.imgflip.com/caption_image \
+-X POST \
+-d "template_id=181913649&username=croure&password=y2btvB-A9TQb92n&text0=testtop&text1=testbottom"
+
+croure
+y2btvB-A9TQb92n
