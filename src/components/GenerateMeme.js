@@ -10,6 +10,8 @@ export const GenerateMeme = ({ memes }) => {
   // to avoid breaking, add empty object
   const meme = memes.find((m) => m.id === template_id) || {};
 
+
+
   return (
     <div>
       <h1>Meme Generator</h1>
@@ -18,6 +20,7 @@ export const GenerateMeme = ({ memes }) => {
       {meme.name}
       {/* add props meme for the template_id */}
       <FormMemeGenerator meme={meme} />
+
     </div>
   );
 };
