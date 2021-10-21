@@ -5,6 +5,9 @@ export const FormMemeGenerator = ({ meme }) => {
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
   // delete const template.id
+  // create a new variable for the custom meme
+  const [finalMeme, setFinalMeme] = useState(null)
+
 
   return (
     <div>
@@ -17,8 +20,8 @@ export const FormMemeGenerator = ({ meme }) => {
           text0: topText,
           text1: bottomText,
           // update login as the one provided didn't work
-          username: 'croure',
-          password: 'y2btvB-A9TQb92n'
+          username: process.env.REACT_APP_IMGFLIP_USERNAME,
+          password: process.env.REACT_APP_IMGFLIP_PASSWORD
         };
 
         
@@ -33,7 +36,9 @@ export const FormMemeGenerator = ({ meme }) => {
           },
         });
 
-        console.log(response)
+        const result = await response.json()
+        setFinalMeme(result.data.url)
+        
       }}>
         {/* create a input for up text and it functionality */}
         <input
@@ -50,6 +55,11 @@ export const FormMemeGenerator = ({ meme }) => {
         {/* button to create a custom meme */}
         <button type="submit">Create Meme</button>
       </form>
+
+      // render the custom meme
+      {finalMeme && <img src={finalMeme} alt="custom meme"/>}
+
+
     </div>
   );
 };
