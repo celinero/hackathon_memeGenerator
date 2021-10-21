@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Link,BrowserRouter, Switch, Route,Redirect } from "react-router-dom";
 
 import { Home } from "./components/Home";
+import { Example } from "./components/Example";
 import { GenerateMeme } from "./components/GenerateMeme";
 
 function App() {
@@ -25,18 +26,40 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact>
-          <Home memes={memes} />
-        </Route>
-        {/* dynamic route as it uses a param */}
-        <Route path="/:template_id" exact>
-          <GenerateMeme memes={memes} />
-        </Route>
-      </Switch>
+    <BrowserRouter> 
+    <div>
+        <div>
+          {/* navbar */}
+          <ul>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/:template_id">Create your meme</Link></li>
+            <li><Link to="/examples">Examples</Link></li>
+          </ul>
+        </div>
+
+        <div> 
+            {/* display page */}
+              <Switch>
+                <Route path="/home">
+                  <Home memes={memes} />
+                </Route>
+                {/* dynamic route as it uses a param */}
+                <Route path="/:template_id" exact>
+                  <GenerateMeme memes={memes} />
+                </Route>
+                <Route path="/examples">
+                  <Example />
+                </Route>
+              {/* redirect to the home page for the first render */}
+                <Redirect to="/home"/>
+              </Switch>
+        </div>
+
+    </div>
     </BrowserRouter>
   );
 }
+
+
 
 export default App;
