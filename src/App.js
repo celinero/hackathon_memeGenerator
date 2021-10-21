@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home } from './pages/Home';
-import { GenerateMeme } from './pages/GenerateMeme';
+import { Home } from "./components/Home";
+import { GenerateMeme } from "./components/GenerateMeme";
 
 function App() {
-  const [memes, setMemes] = useState([])
+  const [memes, setMemes] = useState([]);
 
   const fetchMemes = async () => {
     const response = await fetch("https://api.imgflip.com/get_memes");
     const results = await response.json();
-    
+
     if (results.success) {
-      setMemes(results.data.memes)
+      setMemes(results.data.memes);
     }
-  }
+  };
 
   useEffect(() => {
     fetchMemes();
-  }, [])
+  }, []);
 
   return (
     <BrowserRouter>
@@ -39,4 +35,3 @@ function App() {
 }
 
 export default App;
-
