@@ -1,32 +1,28 @@
-import { useEffect, useState } from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home } from './pages/Home';
-import { GenerateMeme } from './pages/GenerateMeme';
+import { Home } from "./components/Home";
+import { GenerateMeme } from "./components/GenerateMeme";
 
 function App() {
-  const [memes, setMemes] = useState([])
+  const [memes, setMemes] = useState([]);
 
   // fetch data on parent to be available to his children: Home and GenerateMeme
   const fetchMemes = async () => {
     const response = await fetch("https://api.imgflip.com/get_memes");
     const results = await response.json();
-    
+
     if (results.success) {
-      setMemes(results.data.memes)
+      setMemes(results.data.memes);
     }
-  }
+  };
 
   // fetch after mount (componentDidMount)
   // because the component cannot have a async render
   // need to render first, then to update its internal state with the result of api call
   useEffect(() => {
     fetchMemes();
-  }, [])
+  }, []);
 
   return (
 
@@ -46,4 +42,3 @@ function App() {
 }
 
 export default App;
-
