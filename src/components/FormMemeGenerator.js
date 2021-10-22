@@ -11,7 +11,7 @@ export const FormMemeGenerator = ({ meme }) => {
 
   return (
     <div>
-      <form
+      <Form
         onSubmit={async (event) => {
           event.preventDefault();
           // logic for create custom meme from api
@@ -40,35 +40,34 @@ export const FormMemeGenerator = ({ meme }) => {
           );
 
           const result = await response.json();
+          console.log(result);
           setFinalMeme(result.data.url);
         }}
       >
-        <Form>
-          <Row>
-            <Col xs="auto">
-              {/* create a input for up text and it functionality */}
-              <Form.Control
-                placeholder="top text"
-                value={topText}
-                onChange={(e) => setTopText(e.target.value)}
-              ></Form.Control>
-            </Col>
-            <Col xs="auto">
-              {/* create a input for bottom text and it functionality */}
-              <Form.Control
-                placeholder="bottom text"
-                value={bottomText}
-                onChange={(e) => setBottomText(e.target.value)}
-              />
-            </Col>
-            <Col>
-              <Button type="submit" className="mb-2">
-                Create Meme
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </form>
+        <Row>
+          <Col xs="auto">
+            {/* create a input for up text and it functionality */}
+            <Form.Control
+              placeholder="top text"
+              value={topText}
+              onChange={(e) => setTopText(e.target.value)}
+            ></Form.Control>
+          </Col>
+          <Col xs="auto">
+            {/* create a input for bottom text and it functionality */}
+            <Form.Control
+              placeholder="bottom text"
+              value={bottomText}
+              onChange={(e) => setBottomText(e.target.value)}
+            />
+          </Col>
+          <Col>
+            <Button type="submit" className="mb-2">
+              Create Meme
+            </Button>
+          </Col>
+        </Row>
+      </Form>
 
       {/* render the custom meme */}
       {finalMeme && <img src={finalMeme} alt="custom meme" />}
