@@ -56,7 +56,7 @@ export const FormMemeGenerator = ({ meme }) => {
         <button type="submit">Create Meme</button>
       </form>
 
-      // render the custom meme
+       {/* render the custom meme */}
       {finalMeme && <img src={finalMeme} alt="custom meme"/>}
 
 
