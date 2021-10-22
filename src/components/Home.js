@@ -19,7 +19,7 @@ export const Home = ({ memes }) => {
                 <Image
                   src={meme.url}
                   rounded
-                  style={{ width: "100px" }}
+                  style={{ width: "100px", marginTop:"5px" }}
                   alt={"meme"}
                 />
                 <br/>
