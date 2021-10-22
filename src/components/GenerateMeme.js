@@ -11,15 +11,45 @@ export const GenerateMeme = ({ memes }) => {
   const meme = memes.find((m) => m.id === template_id) || {};
 
   return (
-    <div>
-      <h1>Meme Generator</h1>
-      <h2>Create your own meme!</h2>
-      {!meme.url && <p>Please select a picture template from the <a href="/home">gallery</a> first</p>}
-      {meme.url && <img src={meme.url} style={{ width: "300px" }} alt={"meme"} />}
+    <div style={{ margin: "5px", padding: "3px" }}>
+      <h1 style={{ textAlign: "center" }}>Meme Generator</h1>
       <br />
-      {meme.name}
+      <h2 style={{ margin: " 5px", textAlign: "center" }}>
+        Create your own meme!
+      </h2>
+      <br />
+      <div style={{ textAlign: "center" }}>{meme.name}</div>
+
+      <div
+        style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+      >
+        {!meme.url && (
+          <p>
+            Please select a picture template from the{" "}
+            <a href="/home">gallery</a> first
+          </p>
+        )}
+
+        {meme.url && (
+          <img
+            src={meme.url}
+            style={{
+              width: "300px",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+            alt={"meme"}
+          />
+        )}
+      </div>
+      <br />
       {/* add props meme for the template_id */}
-      <FormMemeGenerator meme={meme} />
+      <div
+        style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+      >
+        <FormMemeGenerator meme={meme} />
+      </div>
     </div>
   );
 };
