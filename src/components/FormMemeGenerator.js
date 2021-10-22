@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Container } from "react-bootstrap";
 
 export const FormMemeGenerator = ({ meme }) => {
   // destructuring by passing the info into the state
@@ -43,29 +43,31 @@ export const FormMemeGenerator = ({ meme }) => {
           setFinalMeme(result.data.url);
         }}
       >
-        <Row>
-          <Col xs="auto">
-            {/* create a input for up text and it functionality */}
-            <Form.Control
-              placeholder="top text"
-              value={topText}
-              onChange={(e) => setTopText(e.target.value)}
-            ></Form.Control>
-          </Col>
-          <Col xs="auto">
-            {/* create a input for bottom text and it functionality */}
-            <Form.Control
-              placeholder="bottom text"
-              value={bottomText}
-              onChange={(e) => setBottomText(e.target.value)}
-            />
-          </Col>
-          <Col>
-            <Button type="submit" className="mb-2">
-              Create Meme
-            </Button>
-          </Col>
-        </Row>
+        <Container style={{ justifyContent: "center" }}>
+          <Row>
+            <Col xs="auto">
+              {/* create a input for up text and it functionality */}
+              <Form.Control
+                placeholder="top text"
+                value={topText}
+                onChange={(e) => setTopText(e.target.value)}
+              ></Form.Control>
+            </Col>
+            <Col xs="auto">
+              {/* create a input for bottom text and it functionality */}
+              <Form.Control
+                placeholder="bottom text"
+                value={bottomText}
+                onChange={(e) => setBottomText(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <Button type="submit" className="mb-2">
+                Create Meme
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </Form>
 
       {/* render the custom meme */}
