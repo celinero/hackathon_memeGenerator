@@ -14,7 +14,8 @@ export const GenerateMeme = ({ memes }) => {
     <div>
       <h1>Meme Generator</h1>
       <h2>Create your own meme!</h2>
-      <img src={meme.url} style={{ width: "300px" }} alt={"meme"} />
+      {!meme.url && <p>Please select a picture template from the <a href="/home">gallery</a> first</p>}
+      {meme.url && <img src={meme.url} style={{ width: "300px" }} alt={"meme"} />}
       <br />
       {meme.name}
       {/* add props meme for the template_id */}
