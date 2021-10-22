@@ -40,7 +40,6 @@ export const FormMemeGenerator = ({ meme }) => {
           );
 
           const result = await response.json();
-          console.log(result);
           setFinalMeme(result.data.url);
         }}
       >
@@ -70,7 +69,6 @@ export const FormMemeGenerator = ({ meme }) => {
       </Form>
 
       {/* render the custom meme */}
-  
       {finalMeme && <img src={finalMeme} alt="custom meme" />}
     </div>
   );

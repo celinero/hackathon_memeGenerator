@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { Home } from "./components/Home";
 import { Example } from "./components/Example";
