@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { Home } from "./components/Home";
-import { Example } from "./components/Example";
+import { MyMemes } from "./components/MyMemes";
 import { GenerateMeme } from "./components/GenerateMeme";
 
 import { Navbar, Container, Nav } from "react-bootstrap";
@@ -35,7 +35,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/:template_id">Create your Meme</Nav.Link>
-            <Nav.Link href="/examples">Examples</Nav.Link>
+            <Nav.Link href="/mymemes">My Memes</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -43,16 +43,17 @@ function App() {
       <div>
         {/* display page */}
         <Switch>
-          <Route path="/home">
+          <Route exact path="/home">
             <Home memes={memes} />
           </Route>
+          <Route exact path="/mymemes">
+            <MyMemes />
+          </Route>
           {/* dynamic route as it uses a param */}
-          <Route path="/:template_id" exact>
+          <Route exact path="/:template_id">
             <GenerateMeme memes={memes} />
           </Route>
-          <Route path="/examples">
-            <Example />
-          </Route>
+        
           {/* redirect to the home page for the first render */}
           <Redirect to="/home" />
         </Switch>

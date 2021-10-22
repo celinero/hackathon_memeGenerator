@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { addToStorage } from "../useLocalStorage";
 
 export const FormMemeGenerator = ({ meme }) => {
   // destructuring by passing the info into the state
@@ -7,7 +9,7 @@ export const FormMemeGenerator = ({ meme }) => {
   const [bottomText, setBottomText] = useState("");
   // delete const template.id
   // create a new variable for the custom meme
-  const [finalMeme, setFinalMeme] = useState(null);
+  const [finalMeme, setFinalMeme] = useState();
 
   return (
     <div>
@@ -41,6 +43,11 @@ export const FormMemeGenerator = ({ meme }) => {
 
           const result = await response.json();
           setFinalMeme(result.data.url);
+          addToStorage({
+            name: meme.name,
+            date: new Date(),
+            url: result.data.url
+          });
         }}
       >
         <Container style={{ justifyContent: "center" }}>
