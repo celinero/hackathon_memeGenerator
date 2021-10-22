@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link,BrowserRouter, Switch, Route,Redirect } from "react-router-dom";
+import { Link, BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { Home } from "./components/Home";
 import { Example } from "./components/Example";
 import { GenerateMeme } from "./components/GenerateMeme";
+
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 function App() {
   const [memes, setMemes] = useState([]);
@@ -26,40 +28,37 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter> 
-    <div>
-        <div>
-          {/* navbar */}
-          <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/:template_id">Create your meme</Link></li>
-            <li><Link to="/examples">Examples</Link></li>
-          </ul>
-        </div>
+    <BrowserRouter>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">CWN</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/:template_id">Create your Meme</Nav.Link>
+            <Nav.Link href="/examples">Examples</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
 
-        <div> 
-            {/* display page */}
-              <Switch>
-                <Route path="/home">
-                  <Home memes={memes} />
-                </Route>
-                {/* dynamic route as it uses a param */}
-                <Route path="/:template_id" exact>
-                  <GenerateMeme memes={memes} />
-                </Route>
-                <Route path="/examples">
-                  <Example />
-                </Route>
-              {/* redirect to the home page for the first render */}
-                <Redirect to="/home"/>
-              </Switch>
-        </div>
-
-    </div>
+      <div>
+        {/* display page */}
+        <Switch>
+          <Route path="/home">
+            <Home memes={memes} />
+          </Route>
+          {/* dynamic route as it uses a param */}
+          <Route path="/:template_id" exact>
+            <GenerateMeme memes={memes} />
+          </Route>
+          <Route path="/examples">
+            <Example />
+          </Route>
+          {/* redirect to the home page for the first render */}
+          <Redirect to="/home" />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
-
-
 
 export default App;
