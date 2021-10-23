@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Image, Col, Carousel } from "react-bootstrap";
+import { Container, Image, Carousel } from "react-bootstrap";
 
 import { getFromStorage } from "../useLocalStorage";
 
