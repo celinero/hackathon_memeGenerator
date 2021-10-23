@@ -5,7 +5,7 @@ import { Home } from "./components/Home";
 import { MyMemes } from "./components/MyMemes";
 import { GenerateMeme } from "./components/GenerateMeme";
 
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 
 function App() {
   const [memes, setMemes] = useState([]);
@@ -40,7 +40,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <div>
+      <div style={{background: '#ced1d6', padding: '20px'}}>
         {/* display page */}
         <Switch>
           <Route exact path="/home">
@@ -58,7 +58,18 @@ function App() {
           <Redirect to="/home" />
         </Switch>
       </div>
+
+      <footer style={{ background: 'rgb(33, 37, 41)', color: 'white', padding: '20px 0', textAlign: 'center'}}>
+        <Container>
+          <Row>
+            <Col style={{fontSize: '1 rem'}}>
+            Copyright 2021 by Winny, Natacha, Celine
+            </Col>
+          </Row>
+        </Container>
+      </footer>
     </BrowserRouter>
+
   );
 }
 

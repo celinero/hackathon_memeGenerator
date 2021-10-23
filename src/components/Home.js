@@ -1,34 +1,42 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Image, Col } from "react-bootstrap";
+// const wordStyle = {
+//   textAlign:'center',
+//   padding:'25px',
+// }
 
-const wordStyle = {
+const colStyle = {
+  // border: '1px solid red',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-end',
   textAlign:'center',
-  padding:'28px',
+  padding: 16
 }
 
 export const Home = ({ memes }) => {
   return (
-    <div>
-      <h1 style={wordStyle}>Meme Generator Gallery</h1>
-      
-      <Container>
-        <Row>
-          {memes.map((meme) => (
-            <Col xs={6} md={3}>
-              <Link key={meme.id} to={`/${meme.id}`}>
-                <Image
-                  src={meme.url}
-                  rounded
-                  style={{ width: "100px", marginTop:"5px" }}
-                  alt={"meme"}
-                />
-                <br/>
-                {meme.name}
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <div className='containerStyle'>
+        <h1 className='wordStyle'>Meme Generator Gallery</h1>
+        
+        <Container>
+          <Row>
+            {memes.map((meme) => (
+              <Col xs={6} md={3} style={colStyle}>
+                <Link key={meme.id} to={`/${meme.id}`}>
+                    <Image
+                      src={meme.url}
+                      rounded
+                      style={{ width: "100%", marginBottom: '5px'}}
+                      alt={"meme"}
+                    />
+                    <br/>
+                    {meme.name}
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
   );
 };

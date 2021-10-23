@@ -11,8 +11,8 @@ export const GenerateMeme = ({ memes }) => {
   const meme = memes.find((m) => m.id === template_id) || {};
 
   return (
-    <div style={{ margin: "5px", padding: "3px" }}>
-      <h1 style={{ textAlign: "center" }}>Meme Generator</h1>
+    <div className='containerStyle' style={{ padding: '0 20px'}}>
+      <h1 className='wordStyle' style={{textAlign: "center"}}>Meme Generator</h1>
       <br />
       <h2 style={{ margin: " 5px", textAlign: "center" }}>
         Create your own meme!
