@@ -46,7 +46,7 @@ export const FormMemeGenerator = ({ meme }) => {
           addToStorage({
             name: meme.name,
             date: new Date(),
-            url: result.data.url
+            url: result.data.url,
           });
         }}
       >
@@ -76,9 +76,12 @@ export const FormMemeGenerator = ({ meme }) => {
           </Row>
         </Container>
       </Form>
+      <br />
 
       {/* render the custom meme */}
-      {finalMeme && <img src={finalMeme} alt="custom meme" />}
+      <Container className="mt-4 mx-auto text-center">
+        {finalMeme && <img src={finalMeme} alt="custom meme" />}
+      </Container>
     </div>
   );
 };

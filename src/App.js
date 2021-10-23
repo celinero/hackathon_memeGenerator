@@ -53,7 +53,7 @@ function App() {
           <Route exact path="/:template_id">
             <GenerateMeme memes={memes} />
           </Route>
-        
+
           {/* redirect to the home page for the first render */}
           <Redirect to="/home" />
         </Switch>
