@@ -7,8 +7,8 @@ export function MyMemes() {
   const memes = getFromStorage();
 
   return (
-    <Container className="mt-4 mx-auto text-center">
-      <h1>Meme Generator</h1>
+    <Container className="mt-4 mx-auto text-center containerStyle" style={{ padding: '0 20px'}}>
+      <h1 className='wordStyle'>Meme Generator</h1>
       <br />
       <h2>Keep track of your previous memes</h2>
       <br />
