@@ -22,16 +22,16 @@ export const Home = ({ memes }) => {
         <Container>
           <Row>
             {memes.map((meme) => (
-              <Col xs={6} md={3} style={colStyle}>
-                <Link key={meme.id} to={`/${meme.id}`}>
-                    <Image
-                      src={meme.url}
-                      rounded
-                      style={{ width: "100%", marginBottom: '5px'}}
-                      alt={"meme"}
-                    />
-                    <br/>
-                    {meme.name}
+              <Col xs={6} md={3} style={colStyle} key={meme.id}>
+                <Link to={`/${meme.id}`}>
+                  <Image
+                    src={meme.url}
+                    rounded
+                    style={{ width: "100%", marginBottom: '5px'}}
+                    alt={"meme"}
+                  />
+                  <br/>
+                  {meme.name}
                 </Link>
               </Col>
             ))}

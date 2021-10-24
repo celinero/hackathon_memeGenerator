@@ -23,13 +23,6 @@ export const GenerateMeme = ({ memes }) => {
       <div
         style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
       >
-        {!meme.url && (
-          <p>
-            Please select a picture template from the{" "}
-            <a href="/home">gallery</a> first
-          </p>
-        )}
-
         {meme.url && (
           <img
             src={meme.url}
