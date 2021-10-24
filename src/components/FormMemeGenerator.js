@@ -94,7 +94,7 @@ export const FormMemeGenerator = ({ meme }) => {
               </Form.Group>
             </Col>
             <Col>
-              <Button type="submit" className="mb-2">
+              <Button variant="secondary" type="submit" className="mb-2">
                 Create Meme
               </Button>
             </Col>
