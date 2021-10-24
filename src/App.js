@@ -40,7 +40,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <div style={{background: '#ced1d6', padding: '20px'}}>
+      <div style={{ backgroundColor: "#dddddd", padding: "20px" }}>
         {/* display page */}
         <Switch>
           <Route exact path="/home">
@@ -59,17 +59,23 @@ function App() {
         </Switch>
       </div>
 
-      <footer style={{ background: 'rgb(33, 37, 41)', color: 'white', padding: '20px 0', textAlign: 'center'}}>
+      <footer
+        style={{
+          background: "rgb(33, 37, 41)",
+          color: "white",
+          padding: "20px 0",
+          textAlign: "center",
+        }}
+      >
         <Container>
           <Row>
-            <Col style={{fontSize: '1 rem'}}>
-            Copyright 2021 by Winny, Natacha, Celine
+            <Col style={{ fontSize: "1 rem" }}>
+              Copyright 2021 by Winny, Natacha, Celine
             </Col>
           </Row>
         </Container>
       </footer>
     </BrowserRouter>
-
   );
 }
 
