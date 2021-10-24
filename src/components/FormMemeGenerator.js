@@ -62,7 +62,7 @@ export const FormMemeGenerator = ({ meme }) => {
             <Col xs="auto">
               {/* create a input for up text and it functionality */}
               <Form.Group controlId="validationCustom01">
-                <Form.Label>Top Text</Form.Label>
+                {/* Form Top Text */}
                 <Form.Control
                   required
                   type="text"
@@ -71,12 +71,15 @@ export const FormMemeGenerator = ({ meme }) => {
                   onChange={(e) => setTopText(e.target.value)}
                 ></Form.Control>
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Please, provide a valid text.
+                </Form.Control.Feedback>
               </Form.Group>
             </Col>
             <Col xs="auto">
               {/* create a input for bottom text and it functionality */}
               <Form.Group controlId="validationCustom02">
-                <Form.Label>Bottom Text</Form.Label>
+                {/* Form Bottom Text */}
                 <Form.Control
                   required
                   type="text"
@@ -85,6 +88,9 @@ export const FormMemeGenerator = ({ meme }) => {
                   onChange={(e) => setBottomText(e.target.value)}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Please, provide a valid text.
+                </Form.Control.Feedback>
               </Form.Group>
             </Col>
             <Col>
