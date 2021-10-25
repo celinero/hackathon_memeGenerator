@@ -42,7 +42,6 @@ function App() {
 
       <div
         style={{
-          backgroundImage: "url( https://unsplash.com/photos/qztBRIrU1FM)",
           padding: "20px",
         }}
       >

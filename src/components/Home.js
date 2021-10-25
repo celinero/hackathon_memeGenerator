@@ -23,18 +23,21 @@ export const Home = ({ memes }) => {
         <Row className=" mx-auto text-center">
           <p> To create your own meme, select an image first!</p>
           {memes.map((meme) => (
-            <Col xs={6} md={3} style={colStyle} key={meme.id}>
+            <Col xs={6} md={4} style={colStyle} key={meme.id}>
               <Link to={`/${meme.id}`}>
                 <Image
                   src={meme.url}
                   rounded
                   style={{
                     width: "100%",
+                    height: "200px",
                     marginBottom: "5px",
-                    boxShadow: "5px 10px black",
+                    boxSizing: "border-box",
+                    border: "9px solid black",
                   }}
                   alt={"meme"}
                 />
+                <br />
                 <br />
                 {meme.name}
               </Link>
