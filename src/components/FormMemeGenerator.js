@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from "react-router-dom";
 
 import { Form, Row, Col, Button, Container, Alert } from "react-bootstrap";
 import { addToStorage } from "../useLocalStorage";
@@ -85,7 +85,7 @@ export const FormMemeGenerator = ({ meme }) => {
                       onChange={(e) => {
                         setBoxValues({
                           ...boxValues,
-                          [name]: e.target.value
+                          [name]: e.target.value,
                         });
                       }}
                     ></Form.Control>
@@ -98,16 +98,37 @@ export const FormMemeGenerator = ({ meme }) => {
                 </Col>
               );
             })}
+
             <Col>
-              <Button variant="secondary" type="submit" className="mb-2" disabled={!meme.id}>
-                Create Meme  
-              </Button>&nbsp;
-              <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/home")}>
-                Back  
-              </Button>&nbsp;
-              <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/mymemes")}>
-                See Your Created Memes 
-              </Button>
+              <br />
+              <Form.Group className=" mx-auto text-center">
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  className="mb-2"
+                  disabled={!meme.id}
+                >
+                  Create Meme
+                </Button>
+                &nbsp;
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  className="mb-2"
+                  onClick={() => history.push("/home")}
+                >
+                  Back
+                </Button>
+                &nbsp;
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  className="mb-2"
+                  onClick={() => history.push("/mymemes")}
+                >
+                  See Your Created Memes
+                </Button>
+              </Form.Group>
             </Col>
           </Row>
         </Container>
@@ -131,4 +152,3 @@ export const FormMemeGenerator = ({ meme }) => {
     </div>
   );
 };
- 
