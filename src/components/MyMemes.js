@@ -7,6 +7,7 @@ export function MyMemes() {
   const memes = getFromStorage();
 
   return (
+    //use bootstrap to style the my memes gallery
     <Container
       className="mt-4 mx-auto text-center containerStyle"
       style={{ padding: "10px" }}
@@ -17,6 +18,7 @@ export function MyMemes() {
       <br />
       <br />
       <Carousel variant="dark">
+        {/* display the custom memes by mapping */}
         {memes.map((meme) => (
           <Carousel.Item>
             <Image
@@ -26,6 +28,7 @@ export function MyMemes() {
               className="d-block w-80 mx-auto"
               alt={"meme"}
             />
+            {/* display the name on the current custom meme */}
             <Carousel.Caption style={{ top: "-25px", bottom: "auto" }}>
               <p>{meme.name}</p>
             </Carousel.Caption>
