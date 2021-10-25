@@ -21,6 +21,7 @@ export const Home = ({ memes }) => {
         
         <Container>
           <Row>
+          <p> To create your own meme, select an image first!</p>
             {memes.map((meme) => (
               <Col xs={6} md={3} style={colStyle} key={meme.id}>
                 <Link to={`/${meme.id}`}>

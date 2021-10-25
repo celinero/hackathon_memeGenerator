@@ -34,7 +34,7 @@ function App() {
           <Navbar.Brand href="#home">CWN</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/:template_id">Create your Meme</Nav.Link>
+            {/* <Nav.Link href="/:template_id">Create your Meme</Nav.Link> */}
             <Nav.Link href="/mymemes">My Memes</Nav.Link>
           </Nav>
         </Container>
