@@ -1,9 +1,9 @@
 import { useState } from "react";
-import {Link} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import { Form, Row, Col, Button, Container, Alert } from "react-bootstrap";
 import { addToStorage } from "../useLocalStorage";
 
-export const FormMemeGenerator = ({ meme }) => {
+export const FormMemeGenerator = ({ meme,props }) => {
   // destructuring by passing the info into the state
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
@@ -12,6 +12,8 @@ export const FormMemeGenerator = ({ meme }) => {
   const [finalMeme, setFinalMeme] = useState(null);
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(null);
+
+  const history = useHistory();
 
   //handle validation when user add user
   const handleSubmit = async (event) => {
@@ -103,8 +105,20 @@ export const FormMemeGenerator = ({ meme }) => {
             <Col>
 
               <Button variant="secondary" type="submit" className="mb-2" disabled={!meme.id}>
-                Create Meme
+                Create Meme  
+              </Button>&nbsp;
+
+              <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/home")}>
+                Back  
+              </Button>&nbsp;
+
+              <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/mymemes")}>
+                See Your Created Memes 
               </Button>
+            
+              
+
+              
             </Col>
           </Row>
         </Container>
@@ -124,3 +138,4 @@ export const FormMemeGenerator = ({ meme }) => {
     </div>
   );
 };
+ 
