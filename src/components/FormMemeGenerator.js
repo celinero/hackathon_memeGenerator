@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Form, Row, Col, Button, Container, Alert } from "react-bootstrap";
 import { addToStorage } from "../useLocalStorage";
 
@@ -7,18 +7,20 @@ export const FormMemeGenerator = ({ meme }) => {
   // destructuring by passing the info into the state
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
-  // delete const template.id
-  // create a new variable for the custom meme
+  // create a custom meme setting into state
   const [finalMeme, setFinalMeme] = useState(null);
+  //validation
   const [validated, setValidated] = useState(false);
+  //set errors
   const [error, setError] = useState(null);
 
   //handle validation when user add user
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     setError(null);
 
+    // logic for the validation
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       setValidated(true);
@@ -26,28 +28,27 @@ export const FormMemeGenerator = ({ meme }) => {
     }
 
     // logic for create custom meme from api
-    // move the const params and headers up
+
     const params = {
       template_id: meme.id,
       text0: topText,
       text1: bottomText,
-      // update login as the one provided didn't work
+      // set secure login on .env file
       username: process.env.REACT_APP_IMGFLIP_USERNAME,
       password: process.env.REACT_APP_IMGFLIP_PASSWORD,
     };
 
     try {
       const response = await fetch("https://api.imgflip.com/caption_image", {
-        // stringify didn't work, replace by params
+        // set url by params
         body: new URLSearchParams(params).toString(),
-        // modify to POST instead of GET
         method: "POST",
-        // add headers
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
 
+      // add the custom memes into storage
       const result = await response.json();
       setFinalMeme(result.data.url);
       addToStorage({
@@ -56,13 +57,13 @@ export const FormMemeGenerator = ({ meme }) => {
         url: result.data.url,
       });
     } catch {
-    setError(true);
+      setError(true);
     }
   };
 
   return (
     <div>
-      {/* add validation on form */}
+      {/* add validation on form  */}
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Container style={{ justifyContent: "center" }}>
           <Row className="mb-3">
@@ -77,6 +78,7 @@ export const FormMemeGenerator = ({ meme }) => {
                   value={topText}
                   onChange={(e) => setTopText(e.target.value)}
                 ></Form.Control>
+                {/* validation on text provided */}
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Please, provide a valid text.
@@ -94,6 +96,7 @@ export const FormMemeGenerator = ({ meme }) => {
                   value={bottomText}
                   onChange={(e) => setBottomText(e.target.value)}
                 />
+                {/* validation on text provided */}
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Please, provide a valid text.
@@ -101,8 +104,12 @@ export const FormMemeGenerator = ({ meme }) => {
               </Form.Group>
             </Col>
             <Col>
-
-              <Button variant="secondary" type="submit" className="mb-2" disabled={!meme.id}>
+              <Button
+                variant="secondary"
+                type="submit"
+                className="mb-2"
+                disabled={!meme.id}
+              >
                 Create Meme
               </Button>
             </Col>
@@ -111,12 +118,16 @@ export const FormMemeGenerator = ({ meme }) => {
       </Form>
       <br />
       {!meme.id && (
-          <Alert variant="warning">
-            Please select a picture template from the{" "}
-            <Link to="/home">gallery</Link> first
-          </Alert>
-        )}
-      {error && <Alert variant="danger">OOPS something went wrong, please try again!</Alert>}
+        <Alert variant="warning">
+          Please select a picture template from the{" "}
+          <Link to="/home">gallery</Link> first
+        </Alert>
+      )}
+      {error && (
+        <Alert variant="danger">
+          OOPS something went wrong, please try again!
+        </Alert>
+      )}
       {/* render the custom meme */}
       <Container className="mt-4 mx-auto pb-4 text-center">
         {finalMeme && <img src={finalMeme} alt="custom meme" />}
