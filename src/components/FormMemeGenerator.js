@@ -5,10 +5,12 @@ import {useHistory, Link} from 'react-router-dom';
 import { Form, Row, Col, Button, Container, Alert } from "react-bootstrap";
 import { addToStorage } from "../useLocalStorage";
 
-export const FormMemeGenerator = ({ meme,props }) => {
+export const FormMemeGenerator = ({ meme }) => {
   // destructuring by passing the info into the state
-  const [topText, setTopText] = useState("");
-  const [bottomText, setBottomText] = useState("");
+  const count = meme.box_count;
+  const arrayFromCount = Array.from(Array(count).keys());
+  const [boxValues, setBoxValues] = useState({});
+
   // create a custom meme setting into state
   const [finalMeme, setFinalMeme] = useState(null);
   //validation
@@ -34,9 +36,8 @@ export const FormMemeGenerator = ({ meme,props }) => {
     // logic for create custom meme from api
 
     const params = {
+      ...boxValues,
       template_id: meme.id,
-      text0: topText,
-      text1: bottomText,
       // set secure login on .env file
       username: process.env.REACT_APP_IMGFLIP_USERNAME,
       password: process.env.REACT_APP_IMGFLIP_PASSWORD,
@@ -71,61 +72,42 @@ export const FormMemeGenerator = ({ meme,props }) => {
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Container style={{ justifyContent: "center" }}>
           <Row className="mb-3">
-            <Col xs="auto">
-              {/* create a input for up text and it functionality */}
-              <Form.Group controlId="validationCustom01">
-                {/* Form Top Text */}
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="top text"
-                  value={topText}
-                  onChange={(e) => setTopText(e.target.value)}
-                ></Form.Control>
-                {/* validation on text provided */}
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Please, provide a valid text.
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Col>
-            <Col xs="auto">
-              {/* create a input for bottom text and it functionality */}
-              <Form.Group controlId="validationCustom02">
-                {/* Form Bottom Text */}
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="bottom text"
-                  value={bottomText}
-                  onChange={(e) => setBottomText(e.target.value)}
-                />
-                {/* validation on text provided */}
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Please, provide a valid text.
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Col>
+            {arrayFromCount.map((entry, index) => {
+              const name = `boxes[${index}][text]`;
+              return (
+                <Col xs="auto" key={index}>
+                  <Form.Group controlId={`validationCustom${index}`}>
+                    <Form.Control
+                      required
+                      type="text"
+                      placeholder={`box ${index + 1}`}
+                      value={boxValues[name]}
+                      onChange={(e) => {
+                        setBoxValues({
+                          ...boxValues,
+                          [name]: e.target.value
+                        });
+                      }}
+                    ></Form.Control>
+                    {/* validation on text provided */}
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">
+                      Please, provide a valid text.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+              );
+            })}
             <Col>
-
-
               <Button variant="secondary" type="submit" className="mb-2" disabled={!meme.id}>
                 Create Meme  
               </Button>&nbsp;
-
               <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/home")}>
                 Back  
               </Button>&nbsp;
-
               <Button variant="secondary" type="submit" className="mb-2" onClick={()=> history.push("/mymemes")}>
                 See Your Created Memes 
-
               </Button>
-            
-              
-
-              
             </Col>
           </Row>
         </Container>
