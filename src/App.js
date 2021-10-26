@@ -41,11 +41,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <div
-        style={{
-          padding: "20px",
-        }}
-      >
+      <div style={{ backgroundImage: `url(${Background})`, padding: "20px" }}>
         {/* display page */}
         <Switch>
           <Route exact path="/home">
