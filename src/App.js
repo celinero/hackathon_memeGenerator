@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Home } from "./components/Home";
 import { MyMemes } from "./components/MyMemes";
 import { GenerateMeme } from "./components/GenerateMeme";
+import  Background from './images/backgroundImg.jpg';
 
 import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 
@@ -40,7 +41,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <div style={{ backgroundColor: "#dddddd", padding: "20px" }}>
+      <div style={{ backgroundImage: `url(${Background})`, padding: "20px" }}>
         {/* display page */}
         <Switch>
           <Route exact path="/home">

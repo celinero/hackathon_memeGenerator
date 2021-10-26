@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { FormMemeGenerator } from "./FormMemeGenerator";
 
 export const GenerateMeme = ({ memes }) => {
-  // with image id passed as a parameter, it wil be displayed on this view
+  // with image id passed as a parameter, it will be displayed on this view
+  // useParams let use access route parameter easily
+  // that we defined in the route itself
   const { template_id } = useParams();
-
   // memes is not available in first render so meme can be undefined
   // to avoid breaking, add empty object
   const meme = memes.find((m) => m.id === template_id) || {};
@@ -19,7 +20,6 @@ export const GenerateMeme = ({ memes }) => {
       </h2>
       <br />
       <div style={{ textAlign: "center" }}>{meme.name}</div>
-
       <div
         style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
       >
@@ -50,6 +50,6 @@ export const GenerateMeme = ({ memes }) => {
 /**
  * 
 useParams let use access route parameter easily
-that you defined in your route itself
+that we defined in the route itself
  * 
  */
