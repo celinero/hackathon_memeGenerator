@@ -75,8 +75,11 @@ export const FormMemeGenerator = ({ meme }) => {
             {arrayFromCount.map((entry, index) => {
               const name = `boxes[${index}][text]`;
               return (
-                <Col xs="auto" key={index}>
-                  <Form.Group controlId={`validationCustom${index}`}>
+                <Col key={index}>
+                  <Form.Group
+                    controlId={`validationCustom${index}`}
+                    className=" mb-2 text-center"
+                  >
                     <Form.Control
                       required
                       type="text"
@@ -98,7 +101,8 @@ export const FormMemeGenerator = ({ meme }) => {
                 </Col>
               );
             })}
-
+          </Row>
+          <Row className="mb-3">
             <Col>
               <br />
               <Form.Group size="lg" className=" mb-2 text-center">
