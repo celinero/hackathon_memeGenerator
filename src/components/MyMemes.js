@@ -7,10 +7,7 @@ export function MyMemes() {
 
   return (
     //use bootstrap to style the my memes gallery
-    <Container
-      className="mt-4 mx-auto text-center containerStyle"
-      style={{ padding: "10px" }}
-    >
+    <Container className=" mx-auto text-center " style={{ padding: "10px" }}>
       <h1 className="wordStyle">My Memes</h1>
       <br />
       <h2>Keep track of your previous memes</h2>

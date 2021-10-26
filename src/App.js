@@ -41,6 +41,7 @@ function App() {
         </Container>
       </Navbar>
 
+
       <div style={{ backgroundImage: `url(${Background})`, padding: "20px" }}>
         {/* display page */}
         <Switch>
