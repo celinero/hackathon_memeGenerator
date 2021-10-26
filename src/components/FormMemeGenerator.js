@@ -71,12 +71,15 @@ export const FormMemeGenerator = ({ meme }) => {
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Container style={{ justifyContent: "center" }}>
           <Row className="mb-3">
-            // loop through each input/box
+            {/* loop through each input/box */}
             {arrayFromCount.map((entry, index) => {
               const name = `boxes[${index}][text]`;
               return (
-                <Col xs="auto" key={index}>
-                  <Form.Group controlId={`validationCustom${index}`}>
+                <Col key={index}>
+                  <Form.Group
+                    controlId={`validationCustom${index}`}
+                    className=" mb-2 text-center"
+                  >
                     <Form.Control
                       required
                       type="text"
@@ -98,14 +101,15 @@ export const FormMemeGenerator = ({ meme }) => {
                 </Col>
               );
             })}
-
+          </Row>
+          <Row className="mb-3">
             <Col>
               <br />
-              <Form.Group className=" mx-auto text-center">
+              <Form.Group size="lg" className=" mb-2 text-center">
                 <Button
-                  variant="secondary"
+                  variant="primary"
                   type="submit"
-                  className="mb-2"
+                  className="mb-2 "
                   disabled={!meme.id}
                 >
                   Create Meme

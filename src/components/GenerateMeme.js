@@ -12,8 +12,10 @@ export const GenerateMeme = ({ memes }) => {
   const meme = memes.find((m) => m.id === template_id) || {};
 
   return (
-    <div className='containerStyle' style={{ padding: '0 20px'}}>
-      <h1 className='wordStyle' style={{textAlign: "center"}}>Meme Generator</h1>
+    <div className="containerStyle" style={{ padding: "0 20px" }}>
+      <h1 className="wordStyle" style={{ textAlign: "center" }}>
+        Meme Generator
+      </h1>
       <br />
       <h2 style={{ margin: " 5px", textAlign: "center" }}>
         Create your own meme!
@@ -26,11 +28,14 @@ export const GenerateMeme = ({ memes }) => {
         {meme.url && (
           <img
             src={meme.url}
+            rounded
             style={{
               width: "300px",
               display: "block",
               marginLeft: "auto",
               marginRight: "auto",
+              boxSizing: "border-box",
+              border: "5px solid black",
             }}
             alt={"meme"}
           />
