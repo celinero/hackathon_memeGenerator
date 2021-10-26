@@ -101,11 +101,11 @@ export const FormMemeGenerator = ({ meme }) => {
 
             <Col>
               <br />
-              <Form.Group className=" mx-auto text-center">
+              <Form.Group size="lg" className=" mb-2 text-center">
                 <Button
-                  variant="secondary"
+                  variant="primary"
                   type="submit"
-                  className="mb-2"
+                  className="mb-2 "
                   disabled={!meme.id}
                 >
                   Create Meme
