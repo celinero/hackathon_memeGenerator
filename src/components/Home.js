@@ -16,7 +16,7 @@ const colStyle = {
 
 export const Home = ({ memes }) => {
   return (
-    <div className="containerStyle">
+    <Container className="containerStyle m-80">
       <h1 className="wordStyle">Meme Generator Gallery</h1>
 
       <Container>
@@ -30,10 +30,10 @@ export const Home = ({ memes }) => {
                   rounded
                   style={{
                     width: "100%",
-                    height: "200px",
+                    height: "300px",
                     marginBottom: "5px",
                     boxSizing: "border-box",
-                    border: "9px solid black",
+                    border: "5px solid black",
                   }}
                   alt={"meme"}
                 />
@@ -45,6 +45,6 @@ export const Home = ({ memes }) => {
           ))}
         </Row>
       </Container>
-    </div>
+    </Container>
   );
 };

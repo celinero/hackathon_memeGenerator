@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-
 import { FormMemeGenerator } from "./FormMemeGenerator";
+import { Container } from "react-bootstrap";
+
 
 export const GenerateMeme = ({ memes }) => {
   // with image id passed as a parameter, it will be displayed on this view
@@ -12,7 +13,7 @@ export const GenerateMeme = ({ memes }) => {
   const meme = memes.find((m) => m.id === template_id) || {};
 
   return (
-    <div className="containerStyle" style={{ padding: "0 20px" }}>
+    <Container className="containerStyle w-80" style={{ padding: "0 20px" }}>
       <h1 className="wordStyle" style={{ textAlign: "center" }}>
         Meme Generator
       </h1>
@@ -48,7 +49,7 @@ export const GenerateMeme = ({ memes }) => {
       >
         <FormMemeGenerator meme={meme} />
       </div>
-    </div>
+    </Container>
   );
 };
 

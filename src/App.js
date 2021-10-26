@@ -65,7 +65,6 @@ function App() {
           background: "rgb(33, 37, 41)",
           color: "white",
           padding: "20px 0",
-          textAlign: "center",
         }}
       >
         <Container>
