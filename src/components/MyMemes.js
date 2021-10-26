@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Image, Carousel } from "react-bootstrap";
-
 import { getFromStorage } from "../useLocalStorage";
 
 export function MyMemes() {
