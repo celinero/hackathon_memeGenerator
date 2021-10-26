@@ -7,6 +7,7 @@ import { addToStorage } from "../useLocalStorage";
 
 export const FormMemeGenerator = ({ meme }) => {
   // destructuring by passing the info into the state
+  // variables to define how many boxes/inputs a template will need
   const count = meme.box_count;
   const arrayFromCount = Array.from(Array(count).keys());
   const [boxValues, setBoxValues] = useState({});
@@ -23,7 +24,6 @@ export const FormMemeGenerator = ({ meme }) => {
   //handle validation when user add user
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setError(null);
 
     // logic for the validation
@@ -34,7 +34,6 @@ export const FormMemeGenerator = ({ meme }) => {
     }
 
     // logic for create custom meme from api
-
     const params = {
       ...boxValues,
       template_id: meme.id,
@@ -72,6 +71,7 @@ export const FormMemeGenerator = ({ meme }) => {
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Container style={{ justifyContent: "center" }}>
           <Row className="mb-3">
+            {/* loop through each input/box */}
             {arrayFromCount.map((entry, index) => {
               const name = `boxes[${index}][text]`;
               return (
@@ -138,12 +138,14 @@ export const FormMemeGenerator = ({ meme }) => {
         </Container>
       </Form>
       <br />
+      {/* warning message if no template is selected */}
       {!meme.id && (
         <Alert variant="warning">
           Please select a picture template from the{" "}
           <Link to="/home">gallery</Link> first
         </Alert>
       )}
+      {/* danger message if there is an error */}
       {error && (
         <Alert variant="danger">
           OOPS something went wrong, please try again!
