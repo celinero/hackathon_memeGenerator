@@ -1,3 +1,8 @@
+deploy:
+https://stupefied-curran-05e562.netlify.app/home
+
+
+
 SET UP
 
 step 1: clone the repo to your local
